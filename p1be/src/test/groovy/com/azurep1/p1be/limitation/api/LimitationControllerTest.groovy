@@ -102,7 +102,7 @@ class LimitationControllerTest extends BaseIntegrationSpec {
         def response = mvc.perform(deleteLimit(limitationId)).andReturn().response
 
         then:
-        response.status == HttpStatus.NO_CONTENT.value()
+        response.status == HttpStatus.OK.value()
 
         and:
         limitationRepository.findById(limitationId).isEmpty()
@@ -130,7 +130,7 @@ class LimitationControllerTest extends BaseIntegrationSpec {
         def response = mvc.perform(updateLimit(dto, limitationId)).andReturn().response
 
         then:
-        response.status == HttpStatus.ACCEPTED.value()
+        response.status == HttpStatus.OK.value()
 
         and:
         def representations = objectMapper.readValue(response.contentAsString, LimitationRepresentation[])

@@ -32,13 +32,11 @@ public class LimitationController {
         return limitationService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{id}")
     public List<LimitationRepresentation> update(@PathVariable LimitationId id, @RequestBody @Valid UpdateLimitationDto dto) {
         return limitationService.update(dto.withId(id));
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public List<LimitationRepresentation> delete(@PathVariable LimitationId id) {
         return limitationService.delete(id);
