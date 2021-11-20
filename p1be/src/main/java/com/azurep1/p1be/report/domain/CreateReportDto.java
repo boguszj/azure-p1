@@ -1,6 +1,5 @@
 package com.azurep1.p1be.report.domain;
 
-import com.azurep1.p1be.limitation.domain.PeriodGreaterThanLimitation;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +13,6 @@ import javax.validation.constraints.Pattern;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@PeriodGreaterThanLimitation
 public class CreateReportDto {
 
     @NotBlank
