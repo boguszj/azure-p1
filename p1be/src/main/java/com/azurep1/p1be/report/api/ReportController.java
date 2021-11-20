@@ -6,9 +6,11 @@ import com.azurep1.p1be.report.domain.UsageFragment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Validated
@@ -20,7 +22,7 @@ public class ReportController {
     private final ReportService service;
 
     @PostMapping
-    public Map<String, UsageFragment> report(CreateReportDto dto) {
+    public Map<String, UsageFragment> report(@RequestBody @Valid CreateReportDto dto) {
         return service.report(dto);
     }
 
