@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.ByteArrayInputStream;
 import java.time.Clock;
 import java.time.LocalDateTime;

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ReportRepository extends JpaRepository<Report, ReportId> {
 
-    @Query("select sum(r.reportIntervalSeconds) from Report r where r.reportedAt < :periodStart and r.url like CONCAT('%', :domain, '%')")
+    @Query("select sum(r.reportIntervalSeconds) from Report r where r.reportedAt > :periodStart and r.url like CONCAT('%', :domain, '%')")
     Long getUsageForDomain(String domain, LocalDateTime periodStart);
 
     @Query("select r from Report r where r.reportedAt < :threshold")
