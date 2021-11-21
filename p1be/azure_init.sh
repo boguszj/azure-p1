@@ -91,7 +91,7 @@ fi
 
 # DB CREATION
 
-echo "[1 / 15] Creating postgres server: ${POSTGRES_NAME}"
+echo "[1 / 16] Creating postgres server: ${POSTGRES_NAME}"
 
 ERROR_MESSAGE=$(
   az postgres server create \
@@ -114,7 +114,7 @@ fi
 
 # FW RULE CREATION
 
-echo "[2 / 15] Creating firewall rule for postgres server: ${ALLOW_ALL_TO_POSTGRES_FW_RULE_NAME}"
+echo "[2 / 16] Creating firewall rule for postgres server: ${ALLOW_ALL_TO_POSTGRES_FW_RULE_NAME}"
 
 ERROR_MESSAGE=$(
   az postgres server firewall-rule create \
@@ -136,7 +136,7 @@ fi
 
 # ACR CREATION
 
-echo "[3 / 15] Creating ACR: ${ACR_NAME}"
+echo "[3 / 16] Creating ACR: ${ACR_NAME}"
 
 ERROR_MESSAGE=$(
   az acr create \
@@ -156,7 +156,7 @@ fi
 
 # STORAGE ACCOUNT CREATION
 
-echo "[4 / 15] Creating storage account: ${STORAGE_ACCOUNT_NAME}"
+echo "[4 / 16] Creating storage account: ${STORAGE_ACCOUNT_NAME}"
 
 ERROR_MESSAGE=$(
   az storage account create \
@@ -176,7 +176,7 @@ fi
 
 # STORAGE CONTAINER CREATION
 
-echo "[5 / 15] Creating storage container: ${ARCHIVE_CONTAINER_NAME}"
+echo "[5 / 16] Creating storage container: ${ARCHIVE_CONTAINER_NAME}"
 
 ERROR_MESSAGE=$(
   az storage container create \
@@ -196,7 +196,7 @@ fi
 
 # BUILD JAR
 
-echo "[6 / 15] Building jar"
+echo "[6 / 16] Building jar"
 
 OUTPUT=$(mvn clean install 2>&1)
 
@@ -208,7 +208,7 @@ fi
 
 # BUILDING DOCKER IMAGE
 
-echo "[7 / 15] Building docker image"
+echo "[7 / 16] Building docker image"
 
 IMAGE_REPOSITORY_URL="${ACR_NAME}.azurecr.io"
 IMAGE_ADDRESS="${IMAGE_REPOSITORY_URL}/p1be"
@@ -239,7 +239,7 @@ fi
 
 # PUSHING TO ACR
 
-echo "[8 / 15] Pushing docker image to ACR: ${IMAGE_ADDRESS}"
+echo "[8 / 16] Pushing docker image to ACR: ${IMAGE_ADDRESS}"
 
 ERROR_MESSAGE=$(
   az acr login --name "${ACR_NAME}" 2>&1 1>/dev/null && docker push "${IMAGE_ADDRESS}" 2>&1 1>/dev/null
@@ -253,7 +253,7 @@ fi
 
 # CREATE APP SERVICE PLAN
 
-echo "[9 / 15] Creating app service plan: ${APP_SERVICE_PLAN_NAME}"
+echo "[9 / 16] Creating app service plan: ${APP_SERVICE_PLAN_NAME}"
 
 ERROR_MESSAGE=$(
   az appservice plan create \
@@ -273,7 +273,7 @@ fi
 
 # CREATE APP
 
-echo "[10 / 15] Creating app: ${APP_NAME}"
+echo "[10 / 16] Creating app: ${APP_NAME}"
 
 ERROR_MESSAGE=$(
   az webapp create \
@@ -294,7 +294,7 @@ fi
 
 # OPENING PORT
 
-echo "[11 / 15] Opening port: ${APP_PORT}"
+echo "[11 / 16] Opening port: ${APP_PORT}"
 
 ERROR_MESSAGE=$(
   az webapp config appsettings set \
@@ -314,7 +314,7 @@ fi
 
 # ENABLE WEB APP IDENTITY
 
-echo "[12 / 15] Enabling web app identity"
+echo "[12 / 16] Enabling web app identity"
 
 PRINCIPAL_ID=$(
   az webapp identity assign \
@@ -345,7 +345,7 @@ fi
 
 # ASSIGN IDENTITY TO APP
 
-echo "[13 / 15] Assigning permissions web app identity"
+echo "[13 / 16] Assigning permissions web app identity"
 
 ERROR_MESSAGE=$(
   az resource update \
@@ -364,7 +364,7 @@ fi
 
 # START APP
 
-echo "[14 / 15] Starting app"
+echo "[14 / 16] Starting app"
 
 ERROR_MESSAGE=$(
   az webapp config container set \
@@ -385,7 +385,7 @@ fi
 
 # ENABLE LOGGING
 
-echo "[15 / 15] Enabling logging"
+echo "[15 / 16] Enabling logging"
 
 ERROR_MESSAGE=$(
   az webapp log config \
@@ -393,3 +393,9 @@ ERROR_MESSAGE=$(
     --resource-group "${RG_NAME}" \
     --docker-container-logging filesystem
 )
+
+# WARM UP REQUEST
+
+echo "[16 / 16] Warm up request"
+
+curl --connection-timeout 300 "https://${APP_NAME}.azurewebsites.net"
