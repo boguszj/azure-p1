@@ -182,7 +182,7 @@ echo "[6 / IDK_HOW_MANY_YET] Building jar"
 
 OUTPUT=$(mvn clean install)
 
-if [[ $OUTPUT == *"[INFO] BUILD SUCCESS"* ]]; then
+if [[ $OUTPUT == *"BUILD SUCCESS"* ]]; then
   printSuccessMessage "JAR built"
 else
   printErrorMessage "${OUTPUT}"
