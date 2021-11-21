@@ -54,6 +54,12 @@ APP_SERVICE_PLAN_NAME="${RG_NAME}appserviceplan"
 APP_NAME="${RG_NAME}app"
 APP_PORT="8080"
 
+# INPUT VALIDATION
+
+if [[ ! "$RG_NAME" =~ ^[A-Za-z0-9]{0,8}$nl ]]; then
+    printErrorMessage "Expected resource group name should match regex ^[A-Za-z0-9]{0,8}\$nl"
+fi
+
 # ALREADY INITIALIZED DETECTION
 
 RG_ALREADY_EXISTS=$(
@@ -322,8 +328,6 @@ SUBSCRIPTION_ID=$(
     --query id \
     --output tsv
 )
-
-sleep 180
 
 ERROR_MESSAGE=$(
   az role assignment create \
