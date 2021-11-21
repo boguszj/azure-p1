@@ -24,7 +24,6 @@ function printSuccessMessage() {
 # DEPENDENCY INSTALLATION CHECK
 
 JQ_INSTALLED=$(command -v jq)
-echo $JQ_INSTALLED
 if [ -z "${JQ_INSTALLED}" ]; then
     printErrorMessage "Please install jq"
 fi
