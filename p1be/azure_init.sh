@@ -180,13 +180,9 @@ fi
 
 echo "[6 / IDK_HOW_MANY_YET] Building jar"
 
-ERROR_MESSAGE=$(
-  mvn clean install \
-    2>&1 \
-    1>/dev/null
-)
+OUTPUT=$(mvn clean install)
 
-if [ -z "${ERROR_MESSAGE}" ]; then
+if [[ $OUTPUT == *"[INFO] BUILD SUCCESS"* ]]; then
   printSuccessMessage "JAR built"
 else
   printErrorMessage "${ERROR_MESSAGE}"
