@@ -1,0 +1,70 @@
+.form-field + .form-field{
+    margin-top: 10px;
+}
+
+.m-left-15 {
+    margin-left:15px;
+}
+
+.cursor-auto {
+    cursor: auto!important;
+}
+
+.m-left-auto {
+    margin-left: auto;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.error-message {
+    margin: 0;
+    color: darkred;
+}
+
+.submit-button {
+    margin-top: 20px;
+}
+
+.submit-button span {
+    text-transform: none!important;
+}
+
+button div {
+    text-transform: none!important;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.popup-header {
+    color: #6200ee;
+    font-size: 17px;
+}
+
+.popup-wrapper {
+    min-width: 300px;
+}
+
+.list-item {
+    display: flex;
+    column-gap: 10px;
+}
+
+.list-item .action-icon {
+    visibility: hidden;
+}
+
+.list-item:hover .action-icon {
+    visibility: visible;
+}
+
+.action-icon {
+    cursor: pointer;
+}
+
+.display-none {
+    display: none!important;
+}

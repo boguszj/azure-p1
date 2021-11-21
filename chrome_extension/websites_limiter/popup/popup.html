@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="popup.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script type="module" src="popup.js" defer></script>
+</head>
+<body>
+<div class="popup-wrapper">
+    <p  class="m-left-15 popup-header">Ograniczenia czasowe na stronach</p>
+    <ul id="websites-list" class="mdc-list">
+    </ul>
+    <button id="add-button" class="mdc-button foo-button m-left-15">
+        <div class="mdc-button__ripple"></div>
+        <div class="mdc-button__label ">
+            Dodaj ograniczenie</div>
+    </button>
+    <hr>
+    <form id="website-form" class="m-left-15 display-none">
+        <p id="action-name" style="color: #6200ee;font-size: 15px">Edytuj ograniczenie</p>
+    <div class="form-field">
+    <p id="url-label m-0">Url strony</p>
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <input id="name" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple"></span>
+    </label>
+    </div>
+    <div class="form-field">
+    <p id="time-label m-0">Czas w minutach</p>
+    <label class="mdc-text-field mdc-text-field--filled">
+        <span class="mdc-text-field__ripple"></span>
+        <input id="time" class="mdc-text-field__input" type="number" aria-labelledby="my-label-id">
+        <span class="mdc-line-ripple">min</span>
+    </label>
+    </div>
+
+        <button type="button" id="cancel-button" class="mdc-button foo-button submit-button">
+            <div class="mdc-button__ripple"></div>
+            <span style="color: #565656" class="mdc-button__label">Anuluj</span>
+        </button>
+    <button id="submit-button" type="submit" class="mdc-button foo-button submit-button">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">Zapisz</span>
+    </button>
+    </form>
+</div>
+</body>
+</html>

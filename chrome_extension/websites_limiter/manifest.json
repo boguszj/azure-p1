@@ -1,0 +1,14 @@
+{
+  "name": "Test chrome extension",
+  "version": "0.1",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["storage", "activeTab", "background", "tabs", "http://*/"],
+  "content_security_policy": "script-src 'self' https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js; object-src 'self'"
+}
