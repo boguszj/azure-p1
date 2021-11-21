@@ -73,7 +73,7 @@ fi
 
 # DB CREATION
 
-echo "[1 / IDK_HOW_MANY_YET] Creating postgres server: ${POSTGRES_NAME}"
+echo "[1 / 15] Creating postgres server: ${POSTGRES_NAME}"
 
 ERROR_MESSAGE=$(
   az postgres server create \
@@ -96,7 +96,7 @@ fi
 
 # FW RULE CREATION
 
-echo "[2 / IDK_HOW_MANY_YET] Creating firewall rule for postgres server: ${ALLOW_ALL_TO_POSTGRES_FW_RULE_NAME}"
+echo "[2 / 15] Creating firewall rule for postgres server: ${ALLOW_ALL_TO_POSTGRES_FW_RULE_NAME}"
 
 ERROR_MESSAGE=$(
   az postgres server firewall-rule create \
@@ -118,7 +118,7 @@ fi
 
 # ACR CREATION
 
-echo "[3 / IDK_HOW_MANY_YET] Creating ACR: ${ACR_NAME}"
+echo "[3 / 15] Creating ACR: ${ACR_NAME}"
 
 ERROR_MESSAGE=$(
   az acr create \
@@ -138,7 +138,7 @@ fi
 
 # STORAGE ACCOUNT CREATION
 
-echo "[4 / IDK_HOW_MANY_YET] Creating storage account: ${STORAGE_ACCOUNT_NAME}"
+echo "[4 / 15] Creating storage account: ${STORAGE_ACCOUNT_NAME}"
 
 ERROR_MESSAGE=$(
   az storage account create \
@@ -158,7 +158,7 @@ fi
 
 # STORAGE CONTAINER CREATION
 
-echo "[5 / IDK_HOW_MANY_YET] Creating storage container: ${ARCHIVE_CONTAINER_NAME}"
+echo "[5 / 15] Creating storage container: ${ARCHIVE_CONTAINER_NAME}"
 
 ERROR_MESSAGE=$(
   az storage container create \
@@ -178,7 +178,7 @@ fi
 
 # BUILD JAR
 
-echo "[6 / IDK_HOW_MANY_YET] Building jar"
+echo "[6 / 15] Building jar"
 
 OUTPUT=$(mvn clean install 2>&1)
 
@@ -190,7 +190,7 @@ fi
 
 # BUILDING DOCKER IMAGE
 
-echo "[7 / IDK_HOW_MANY_YET] Building docker image"
+echo "[7 / 15] Building docker image"
 
 IMAGE_REPOSITORY_URL="${ACR_NAME}.azurecr.io"
 IMAGE_ADDRESS="${IMAGE_REPOSITORY_URL}/p1be"
@@ -221,7 +221,7 @@ fi
 
 # PUSHING TO ACR
 
-echo "[8 / IDK_HOW_MANY_YET] Pushing docker image to ACR: ${IMAGE_ADDRESS}"
+echo "[8 / 15] Pushing docker image to ACR: ${IMAGE_ADDRESS}"
 
 ERROR_MESSAGE=$(
   az acr login --name "${ACR_NAME}" 2>&1 1>/dev/null && docker push "${IMAGE_ADDRESS}" 2>&1 1>/dev/null
@@ -235,7 +235,7 @@ fi
 
 # CREATE APP SERVICE PLAN
 
-echo "[9 / IDK_HOW_MANY_YET] Creating app service plan: ${APP_SERVICE_PLAN_NAME}"
+echo "[9 / 15] Creating app service plan: ${APP_SERVICE_PLAN_NAME}"
 
 ERROR_MESSAGE=$(
   az appservice plan create \
@@ -255,7 +255,7 @@ fi
 
 # CREATE APP
 
-echo "[10 / IDK_HOW_MANY_YET] Creating app: ${APP_NAME}"
+echo "[10 / 15] Creating app: ${APP_NAME}"
 
 ERROR_MESSAGE=$(
   az webapp create \
@@ -276,7 +276,7 @@ fi
 
 # OPENING PORT
 
-echo "[11 / IDK_HOW_MANY_YET] Opening port: ${APP_PORT}"
+echo "[11 / 15] Opening port: ${APP_PORT}"
 
 ERROR_MESSAGE=$(
   az webapp config appsettings set \
@@ -296,7 +296,7 @@ fi
 
 # ENABLE WEB APP IDENTITY
 
-echo "[12 / IDK_HOW_MANY_YET] Enabling web app identity"
+echo "[12 / 15] Enabling web app identity"
 
 PRINCIPAL_ID=$(
   az webapp identity assign \
@@ -331,7 +331,7 @@ fi
 
 # ASSIGN IDENTITY TO APP
 
-echo "[13 / IDK_HOW_MANY_YET] Assigning permissions web app identity"
+echo "[13 / 15] Assigning permissions web app identity"
 
 ERROR_MESSAGE=$(
   az resource update \
@@ -350,7 +350,7 @@ fi
 
 # START APP
 
-echo "[14 / IDK_HOW_MANY_YET] Starting app"
+echo "[14 / 15] Starting app"
 
 ERROR_MESSAGE=$(
   az webapp config container set \
@@ -371,7 +371,7 @@ fi
 
 # ENABLE LOGGING
 
-echo "[15 / IDK_HOW_MANY_YET] Enabling logging"
+echo "[15 / 15] Enabling logging"
 
 ERROR_MESSAGE=$(
   az webapp log config \
