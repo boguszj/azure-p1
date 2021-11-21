@@ -21,6 +21,19 @@ function printSuccessMessage() {
   echo -e "${GREEN}${1}${NC}"
 }
 
+# DEPENDENCY INSTALLATION CHECK
+
+JQ_INSTALLED=$(command -v jq)
+echo $JQ_INSTALLED
+if [ -z "${JQ_INSTALLED}" ]; then
+    printErrorMessage "Please install jq"
+fi
+
+MVN_INSTALLED=$(command -v mvn)
+if [ -z "${MVN_INSTALLED}" ]; then
+    printErrorMessage "Please install maven"
+fi
+
 # VARIABLE DECLARATION
 
 if [ -z "$4" ]; then
