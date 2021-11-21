@@ -1,0 +1,19 @@
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: calc(100% - 30px);
+    align-items: flex-start;
+}
+
+.card {
+    margin-top: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    min-height: initial;
+    padding-top: 0!important;
+}
+
+h2 {
+    color: #333333;
+}
