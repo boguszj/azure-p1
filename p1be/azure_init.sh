@@ -324,7 +324,7 @@ SUBSCRIPTION_ID=$(
     --output tsv
 )
 
-sleep 120
+sleep 180
 
 ERROR_MESSAGE=$(
   az role assignment create \
