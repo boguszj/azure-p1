@@ -185,7 +185,7 @@ OUTPUT=$(mvn clean install)
 if [[ $OUTPUT == *"[INFO] BUILD SUCCESS"* ]]; then
   printSuccessMessage "JAR built"
 else
-  printErrorMessage "${ERROR_MESSAGE}"
+  printErrorMessage "${OUTPUT}"
 fi
 
 # BUILDING DOCKER IMAGE
