@@ -320,13 +320,11 @@ PRINCIPAL_ID=$(
   az webapp identity assign \
     --resource-group "${RG_NAME}" \
     --name "${APP_NAME}" \
-    --query principalId \
-    --output tsv
+    --query principalId | tr -d \"
 )
 SUBSCRIPTION_ID=$(
   az account show \
-    --query id \
-    --output tsv
+    --query id | tr -d \"
 )
 
 ERROR_MESSAGE=$(
