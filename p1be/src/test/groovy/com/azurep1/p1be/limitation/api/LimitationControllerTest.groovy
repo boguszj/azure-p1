@@ -213,13 +213,13 @@ class LimitationControllerTest extends BaseIntegrationSpec {
 
     }
 
-    def 'should return 204 on non existent schedule deletion'() {
+    def 'should return 200 on non existent schedule deletion'() {
 
         when:
         def response = mvc.perform(deleteLimit(new LimitationId('c43e183c-f4fc-4d57-82dc-09d642653331'))).andReturn().response
 
         then:
-        response.status == HttpStatus.NO_CONTENT.value()
+        response.status == HttpStatus.OK.value()
 
     }
 

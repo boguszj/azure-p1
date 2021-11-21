@@ -26,8 +26,10 @@ public class ScheduledReportArchiver {
     @Scheduled(fixedDelayString = "${app.archivization.interval-ms}")
     public void archiveReports() {
         var toArchive = repository.findAllForArchivization(LocalDateTime.now(clock).minus(reportAgeArchivizationThreshold));
-        storage.archive(toArchive);
-        repository.deleteAll(toArchive);
+        if (toArchive.size() > 0) {
+            storage.archive(toArchive);
+            repository.deleteAll(toArchive);
+        }
     }
 
 }

@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: azure
+
+app:
+  archivization:
+    interval-ms: 60000
+    report-age-threshold: PT48H
