@@ -44,6 +44,7 @@ carriage returns may not be handled correctly. If so, step 12. is bound to fail.
    - set APP_SERVICE_URL to created app service url 
 3. Go to chrome://extensions/ and click Load Unpacked
 4. Select azure-p1/chrome_extension/websites_limiter
+5. Click refresh icon inside chrome extension card.
 
 After following these steps our chrome extension should be ready.
 
