@@ -38,6 +38,14 @@ Run script ``/p1be/azure_init.sh``.
 carriage returns may not be handled correctly. If so, step 12. is bound to fail. If this happens steps 12 through 16 can still be executed manually.
 
 ### 4.2 Chrome extension setup
+1. Clone this repo
+2. Edit file /chrome_extension/websites_limiter/constants.js
+   - set isDev = false
+   - set APP_SERVICE_URL to created app service url 
+3. Go to chrome://extensions/ and click Load Unpacked
+4. Select azure-p1/chrome_extension/websites_limiter
+
+After following these steps our chrome extension should be ready.
 
 ## 5. Presentation
 
