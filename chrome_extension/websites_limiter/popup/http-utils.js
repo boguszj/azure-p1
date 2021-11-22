@@ -1,5 +1,8 @@
-const isDev = true;
-const API_URL = isDev ? 'http://localhost:8080': '';
+export let API_URL;
+
+export const setApiUrl = (url) => {
+    API_URL = url;
+}
 
 export const getWebsitesTimeLimits = async () => {
     const response = await fetch(API_URL + '/api/limitation');

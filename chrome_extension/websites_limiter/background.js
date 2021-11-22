@@ -1,5 +1,4 @@
-const isDev = true;
-const API_URL = isDev ? 'http://localhost:8080' : '';
+import { API_URL } from "./constants.js";
 
 const handleBlockedWebsites = async () => {
     getCurrentHttpTab(async (tab) => {

@@ -1,7 +1,9 @@
 import {toMinutes, toSeconds} from "./popup-utils.js";
 import {getNameErrorMessage, getTimeErrorMessage, clearErrorMessages} from "./validation-utils.js";
-import {getWebsitesTimeLimits, updateWebsiteLimit, createWebsiteLimit, deleteWebsiteLimit} from "./http-utils.js";
+import {getWebsitesTimeLimits, updateWebsiteLimit, createWebsiteLimit, deleteWebsiteLimit, setApiUrl} from "./http-utils.js";
 import { displayWebsitesLimitsList, insertErrorMessage } from "./dom-updater.js";
+import { API_URL} from "../constants.js";
+setApiUrl(API_URL);
 
 let editedWebsiteId = null;
 const PERIOD_SECONDS = 86400;
