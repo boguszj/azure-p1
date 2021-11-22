@@ -34,7 +34,7 @@ Backend saves archival data to **storage container** for further potential analy
 
 Run script ``/p1be/azure_init.sh``.
 
-**Note** Depending on shell being used and (on Windows WSL) installation of ``azure-cli `` ([issue](https://github.com/Azure/azure-cli/issues/15745))
+**Note** Depending on shell being used and (on Windows WSL) installation of ``azure-cli`` ([issue](https://github.com/Azure/azure-cli/issues/15745))
 carriage returns may not be handled correctly. If so, step 12. is bound to fail. If this happens steps 12 through 16 can still be executed manually.
 
 ### 4.2 Chrome extension setup
