@@ -50,7 +50,7 @@ After following these steps our chrome extension should be ready.
 
 ## 5. Presentation
 
-<Youtube video to be embedded>
+Project demo: https://youtu.be/Btvrjg0LEM4
 
 ## 6. Potential AI usages
 
