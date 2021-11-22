@@ -23,7 +23,7 @@ The system should allow to set limit of time spent on any given website and bloc
   <img src="https://github.com/boguszj/azure-p1/blob/main/assets/infra.drawio.png" alt="Infrastructure diagram"/>
 </p>
 
-**Chrome extensions** communicates with backend hosted on **App Service** through HTTP API
+**Chrome extensions** communicates with backend (Springboot) hosted on **App Service** through HTTP API
 **App Service** runs docker image from **container registry**
 Backend communicates with **PostgresDB** to store and read data required in app runtime
 Backend saves archival data to **storage container** for further potential analysys
