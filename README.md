@@ -19,7 +19,14 @@ The system should allow to set limit of time spent on any given website and bloc
 
 ## 3. Infrastucture
 
-<image to be embedded>
+<p align="center">
+  <img src="https://github.com/boguszj/azure-p1/blob/main/assets/infra.drawio.png" alt="Infrastructure diagram"/>
+</p>
+
+**Chrome extensions** communicates with backend hosted on **App Service** through HTTP API
+**App Service** runs docker image from **container registry**
+Backend communicates with **PostgresDB** to store and read data required in app runtime
+Backend saves archival data to **storage container** for further potential analysys
 
 ## 4. Setup
 
@@ -44,3 +51,10 @@ To avoid performance issues related to big volumen of data being stored in Postg
 - content recommendation engine based on browsing history and attension span
 - dangerous search patterns recognition
 - ...
+  
+## 6. Authors
+  
+| Name                                                  | Responsibilities                      |
+|-------------------------------------------------------|---------------------------------------|
+| [Karolina Czachorska](https://github.com/karolina-cz) | Chrome extension, deployment to azure |
+| [Jakub Bogusz](https://github.com/boguszj)            | Backend service, deployment to azure  |
